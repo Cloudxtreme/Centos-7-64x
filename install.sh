@@ -43,12 +43,12 @@ rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch
 rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 
-yum install -y nginx
+yum --enablerepo=remi,remi-php56 install -y nginx php-fpm php-common
 systemctl restart nginx.service
 systemctl enable nginx.service
 
 #INSTALL MARIA DATABASE
-yum -y install MariaDB-server MariaDB-client
+yum -y install MariaDB-server mariadb-client
 systemctl start MariaDB
 mysql_secure_installation
 cp -fr /tmp/Centos-7-64x/sources/my.cnf /etc/
@@ -57,8 +57,7 @@ systemctl enable MariaDB.service
 systemctl restart MariaDB.service
 
 #INSTALL PHP
-yum --enablerepo=remi,remi-php56 install -y php-fpm php-common php-opcache php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongo php-pecl-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
-
+yum --enablerepo=remi,remi-php56 install -y php-opcache php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongo php-pecl-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
 
 cp -fr /tmp/Centos-7-64x/sources/php.ini /etc/
 sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php.ini
