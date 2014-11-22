@@ -33,8 +33,10 @@ yum -y remove postfix*
 yum -y remove rsyslog*
 
 #OPEN PORT 80
--A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
-stemctl restart iptables
+systemctl start  iptables.service
+iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+service iptables save
+systemctl restart  iptables.service
 
 #INSTALL NGINX
 rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
