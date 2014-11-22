@@ -48,13 +48,13 @@ systemctl restart nginx.service
 systemctl enable nginx.service
 
 #INSTALL MARIA DATABASE
-yum -y install mariadb-server mariadb-client
-systemctl start mariadb
+yum -y install MariaDB-server MariaDB-client
+systemctl start MariaDB
 mysql_secure_installation
 cp -fr /tmp/Centos-7-64x/sources/my.cnf /etc/
 
-systemctl enable mariadb.service
-systemctl restart mariadb.service
+systemctl enable MariaDB.service
+systemctl restart MariaDB.service
 
 #INSTALL PHP
 yum --enablerepo=remi,remi-php56 install -y php-fpm php-common php-opcache php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongo php-pecl-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
