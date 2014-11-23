@@ -44,7 +44,7 @@ MAX_CHILDS=$((MAX_SERVERS+START_SERVERS))
 $SED -i "s/@@MAX_CHILDS@@/$MAX_CHILDS/g" $FPMCONF
 
 #ADD NGINX TO GROUP, SO IT CAN PASS ROUTES
-usermod -aG $USERNAME nginx
+# usermod -aG $USERNAME nginx
 chmod g+rx /home/nginx/$HOME_DIR
 chmod 600 $CONFIG
 
