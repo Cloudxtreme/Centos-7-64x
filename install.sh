@@ -70,8 +70,9 @@ systemctl enable php-fpm.service
 #MOVE MENU, SOURCE
 mv /tmp/Centos-7-64x/sources/easynginx /bin/
 chmod +x /bin/easynginx
-mkdir /etc/easynginx/
-cp -fr /tmp/Centos-7-64x/sources/* /etc/easynginx/
+mkdir /etc/easynginx
+mkdir /etc/easynginx/sources
+cp -fr /tmp/Centos-7-64x/sources/* /etc/easynginx/sources/
 
 
 #RESTART VPS!!!!!!!!!!!!!
