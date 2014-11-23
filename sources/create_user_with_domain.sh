@@ -21,7 +21,7 @@ echo $PASS | passwd --stdin $USERNAME
 CONFIG=$NGINX_SITE_CONF/$DOMAIN.conf
 cp $SOURCES_DIR/nginx.vhost.conf $CONFIG
 $SED -i "s/@@HOSTNAME@@/$DOMAIN/g" $CONFIG
-$SED -i "s#@@PATH@@#\/home\/"$USERNAME$/public_html"#g" $CONFIG
+$SED -i "s#@@PATH@@#\/home\/"$USERNAME/public_html"#g" $CONFIG
 $SED -i "s/@@LOG_PATH@@/\/home\/$USERNAME\/_logs/g" $CONFIG
 $SED -i "s#@@SOCKET@@#/var/run/php-fpm/"$USERNAME"_fpm.sock#g" $CONFIG
 echo "How many FPM servers would you like by default:"
@@ -48,16 +48,16 @@ chmod g+rx /home/$HOME_DIR
 chmod 600 $CONFIG
 
 #CREATE TEST PHPINFO FILE
-cat > "/home/$HOME_DIR$/public_html/index.php" <<END
+cat > "/home/$HOME_DIR/public_html/index.php" <<END
 <?php phpinfo(); ?>
 END
 
 # set file perms and create required dirs!
-mkdir -p /home/$HOME_DIR$/public_html
+mkdir -p /home/$HOME_DIR/public_html
 mkdir /home/$HOME_DIR/_logs
 mkdir /home/$HOME_DIR/_sessions
 chmod 750 /home/$HOME_DIR -R
 chmod 700 /home/$HOME_DIR/_sessions
 chmod 770 /home/$HOME_DIR/_logs
-chmod 750 /home/$HOME_DIR$/public_html
+chmod 750 /home/$HOME_DIR/public_html
 chown $USERNAME:$USERNAME /home/$HOME_DIR/ -R
