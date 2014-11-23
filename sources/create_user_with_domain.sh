@@ -7,15 +7,12 @@ SOURCES_DIR='/etc/easynginx/sources'
 
 SED=`which sed`
 
-echo "Please enter new domain: "
-read -s DOMAIN
-DOMAIN=$1
-
+echo -n "Please enter new domain: "
+read DOMAIN
 #CHECK DOMAIN VALIDATE
 PATTERN="^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$";
 if [[ "$DOMAIN" =~ $PATTERN ]]; then
 	DOMAIN=`echo $DOMAIN | tr '[A-Z]' '[a-z]'`
-	echo "Creating hosting for:" $DOMAIN
 else
 	echo "invalid domain name"
 	exit 1 
