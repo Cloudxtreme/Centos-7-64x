@@ -7,10 +7,8 @@ SOURCES_DIR='/etc/easynginx/sources'
 
 SED=`which sed`
 
-if [ -z $1 ]; then
-	echo "No domain name given"
-	exit 1
-fi
+echo "Please enter new domain: "
+read -s DOMAIN
 DOMAIN=$1
 
 #CHECK DOMAIN VALIDATE
