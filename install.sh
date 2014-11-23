@@ -46,6 +46,7 @@ yum --enablerepo=remi,remi-php56 install -y nginx php-fpm php-common
 systemctl enable nginx.service
 
 #INSTALL MARIA DATABASE
+rpm -ev mariadb*
 
 cp -fr /tmp/Centos-7-64x/sources/MariaDB.repo /etc/yum.repos.d/
 yum -y update
