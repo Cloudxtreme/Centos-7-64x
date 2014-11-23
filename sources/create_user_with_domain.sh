@@ -4,7 +4,6 @@ NGINX_DEFAULT_CONF='/etc/nginx/default.d'
 PHP_POOL_DIR='/etc/php-fpm.d'
 SOURCES_DIR='/etc/easynginx/sources'
 
-
 SED=`which sed`
 
 echo -n "Please enter new domain: "
@@ -43,8 +42,7 @@ cp $SOURCES_DIR/nginx.vhost.conf $CONFIG
 $SED -i "s/@@HOSTNAME@@/$DOMAIN/g" $CONFIG
 $SED -i "s#@@PATH@@#\/home\/"$USERNAME$PUBLIC_HTML_DIR"#g" $CONFIG
 $SED -i "s/@@LOG_PATH@@/\/home\/$USERNAME\/_logs/g" $CONFIG
-$SED -i "s#@@SOCKET@@#/var/run/pm.sock/"$USERNAME"_fpm.sock#g" $CONFIG
-
+$SED -i "s#@@SOCKET@@#/var/run/php-fpm/"$USERNAME"_fpm.sock#g" $CONFIG
 echo "How many FPM servers would you like by default:"
 read FPM_SERVERS
 echo "Min number of FPM servers would you like:"
@@ -68,7 +66,7 @@ usermod -aG $USERNAME $USERNAME
 chmod g+rx /home/$HOME_DIR
 chmod 600 $CONFIG
 
-ln -s $CONFIG $NGINX_DEFAULT_CONF/$DOMAIN.conf
+# ln -s $CONFIG $NGINX_DEFAULT_CONF/$DOMAIN.conf
 
 # set file perms and create required dirs!
 mkdir -p /home/$HOME_DIR$PUBLIC_HTML_DIR
