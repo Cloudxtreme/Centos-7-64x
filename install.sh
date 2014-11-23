@@ -80,4 +80,4 @@ mkdir /etc/easynginx/sources
 cp -fr /tmp/Centos-7-64x/sources/* /etc/easynginx/sources/
 
 #RESTART VPS!!!!!!!!!!!!!
-# /sbin/shutdown -r now
+/sbin/shutdown -r now
