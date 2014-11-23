@@ -1,5 +1,5 @@
 #PRE_CONFIG
-NGINX_SITE_CONF='/etc/nginx/conf.d'
+NGINX_SITE_CONF='/etc/nginx/domains'
 NGINX_DEFAULT_CONF='/etc/nginx/default.d'
 PHP_POOL_DIR='/etc/php-fpm.d'
 SOURCES_DIR='/etc/easynginx/sources'

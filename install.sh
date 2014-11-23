@@ -46,12 +46,13 @@ yum --enablerepo=remi,remi-php56 install -y nginx php-fpm php-common
 systemctl enable nginx.service
 
 #INSTALL MARIA DATABASE
-yum -y remove mariadb-libs-5.5.40-1.el7_0.x86_64
+# yum -y remove mariadb-libs-5.5.40-1.el7_0.x86_64
+# yum -y remove mariadb-libs-1:5.5.40-1.el7_0.x86_64
 
-cp -fr /tmp/Centos-7-64x/sources/MariaDB.repo /etc/yum.repos.d/
+# cp -fr /tmp/Centos-7-64x/sources/MariaDB.repo /etc/yum.repos.d/
 yum -y update
-yum -y install MariaDB-server mariadb-client
-systemctl start MariaDB
+yum -y install mariadb-server mariadb-client
+systemctl start mariadb
 mysql_secure_installation
 cp -fr /tmp/Centos-7-64x/sources/my.cnf /etc/
 
