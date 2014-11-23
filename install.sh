@@ -36,7 +36,6 @@ yum -y remove rsyslog*
 systemctl start  iptables.service
 iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 service iptables save
-systemctl restart  iptables.service
 
 #INSTALL NGINX
 rpm -Uvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
@@ -44,7 +43,6 @@ rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 
 yum --enablerepo=remi,remi-php56 install -y nginx php-fpm php-common
-systemctl restart nginx.service
 systemctl enable nginx.service
 
 #INSTALL MARIA DATABASE
@@ -57,17 +55,23 @@ mysql_secure_installation
 cp -fr /tmp/Centos-7-64x/sources/my.cnf /etc/
 
 systemctl enable MariaDB.service
-systemctl restart MariaDB.service
 
-#INSTALL PHP
+#INSTALL PHP-FPM
 yum --enablerepo=remi,remi-php56 install -y php-opcache php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongo php-pecl-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
-
-
-
+cp -fr /tmp/Centos-7-64x/sources/www.conf /etc/php-fpm.d
 cp -fr /tmp/Centos-7-64x/sources/php.ini /etc/
 sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php.ini
 cp -fr /tmp/Centos-7-64x/sources/nginx.conf /etc/nginx/
 sed -i "s/number_cores/$number_cores/g" /etc/nginx/nginx.conf
 
 systemctl enable php-fpm.service
-systemctl restart php-fpm.service
+
+#MOVE MENU, SOURCE
+mv /tmp/Centos-7-64x/sources/easynginx /bin/
+chmod +x /bin/easynginx
+mkdir /etc/easynginx/
+cp -fr /tmp/Centos-7-64x/sources/* /etc/easynginx/
+
+
+#RESTART VPS!!!!!!!!!!!!!
+# /sbin/shutdown -r now
