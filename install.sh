@@ -44,6 +44,7 @@ rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0
 
 yum --enablerepo=remi,remi-php56 install -y nginx php-fpm php-common
 systemctl enable nginx.service
+mkdir /etc/nginx/domains
 
 #INSTALL MARIA DATABASE
 # yum -y remove mariadb-libs-5.5.40-1.el7_0.x86_64
