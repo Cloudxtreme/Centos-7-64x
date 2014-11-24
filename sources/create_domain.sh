@@ -25,7 +25,6 @@ touch /home/$user/$domain/index.php
 cat > "/home/$user/$domain/index.php" <<END
 <?php phpinfo(); ?>
 END
-
 		chmod 701 /home/$user/$domain
 		chown -R $user:$user /home/$user/$domain
 		echo "OK! Domain $domain was added to user $user."
