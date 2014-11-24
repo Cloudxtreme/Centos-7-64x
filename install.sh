@@ -65,6 +65,8 @@ mv /etc/easynginx/sources/php-fpm.conf /etc/
 rm -rf /etc/php.ini
 mv /etc/easynginx/sources/php.ini /etc/
 
+mkdir /etc/php-fpm.d/users/
+
 systemctl enable php-fpm.service
 
 #INSTALL MARIADB
@@ -80,6 +82,7 @@ mv /etc/easynginx/sources/easynginx /bin/
 chmod +x /bin/easynginx
 chmod 600 /etc/easynginx/sources/*.sh
 chmod 700 -R /etc/easynginx/
+
 
 #RESTART VPS!!!!!!!!!!!!!
 #/sbin/shutdown -r now

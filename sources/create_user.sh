@@ -13,15 +13,14 @@ else
 	echo -n "Enter password for user $user: "
 	read -s password
 	echo $password | passwd --stdin $user
-	mkdir /home/$user
 	chown -R $user:$user /home/$user
 
 	mkdir /home/$user/_logs
-	touch /home/$user/_log/nginx_access.log
-	touch /home/$user/_log/nginx_error.log
-	touch /home/$user/_log/php_error.log
+	touch /home/$user/_logs/nginx_access.log
+	touch /home/$user/_logs/nginx_error.log
+	touch /home/$user/_logs/php_error.log
 
-	chown -R root:root /home/$user/_log
+	chown -R root:root /home/$user/_logs
 
 	mkdir /home/$user/_sessions
 	chown -R $user:$user /home/$user/_sessions
@@ -32,9 +31,9 @@ else
 	chmod 701 /home/$user/
 
 	#CREATE POOL FOR USER
-	cp /etc/easynginx/sources/pool.conf /etc/php-fpm.d/users/$users/pool_$users.conf
-	$SED -i "s/@@USER@@/$user/g" /etc/php-fpm.d/users/$users/pool_$users.conf
-	$SED -i "s/@@PORT@@/$port/g" /etc/php-fpm.d/users/$users/pool_$users.conf
+	cp /etc/easynginx/sources/pool.conf /etc/php-fpm.d/users/$user/pool_$user.conf
+	$SED -i "s/@@USER@@/$user/g" /etc/php-fpm.d/users/$user/pool_$user.conf
+	$SED -i "s/@@PORT@@/$port/g" /etc/php-fpm.d/users/$user/pool_$user.conf
 
 	rm /etc/easynginx/variables/port.sh
 	touch /etc/easynginx/variables/port.sh
