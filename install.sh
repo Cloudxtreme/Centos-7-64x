@@ -58,7 +58,7 @@ mv /etc/easynginx/sources/nginx.conf /etc/nginx/
 sed -i "s/number_cores/$number_cores/g" /etc/nginx/nginx.conf
 
 #INSTALL PHP-FPM
-yum --enablerepo=remi,remi-php56 install -y php-opcache php5-mcrypt php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongo php-pecl-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
+yum --enablerepo=remi,remi-php56 install -y php-opcache php5-mcrypt php5-cli php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongo php-pecl-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
 rm -rf /etc/php-fpm.d/www.conf
 rm -rf /etc/php-fpm.conf
 mv /etc/easynginx/sources/php-fpm.conf /etc/
@@ -117,9 +117,11 @@ sed -i 's/DENY_TEMP_IP_LIMIT = \"100\"/DENY_TEMP_IP_LIMIT = \"200\"/' /etc/csf/c
 csf -r
 service iptables restart
 
-#INSTALL COMPOSER
+#INSTALL OTHER COMPOMENT
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
+
+yum -y install net-tools
 
 #SET TIME
 timedatectl set-timezone Asia/Ho_Chi_Minh
