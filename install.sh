@@ -1,7 +1,7 @@
 #!/bin/bash
 #MOVE TO ETC/EASYNGINX
 mkdir /etc/easynginx/
-mv /tmp/Centos-7-64x/ /etc/easynginx/
+mv /tmp/Centos-7-64x/* /etc/easynginx/
 cd /etc/easynginx/
 
 #CLEAN BEFORE INSTALL
