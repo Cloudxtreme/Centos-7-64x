@@ -4,7 +4,7 @@ Version EasyNginx for Centos-7-64x
 What is EasyNginx ?
 ===================
 EasyNginx is some bash script. EasyNginx will help you install LEMP( Nginx, PHP-FPM, MariaDB on Linux ) and some other software like CSF, Composer...
-You only need to copy below to terminal, then press enter. Wait about 3 minutes. Restart VPS. Enter command "easynginx" to access menu.
+You only need to copy below code to terminal, then press enter. Wait about 3 minutes. Restart VPS. Enter command "easynginx" to access menu.
 You can create user, domain for each user. And the last, EasyNginx was writen to optimous speed and security.
 
 How to install
