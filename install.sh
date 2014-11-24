@@ -60,6 +60,8 @@ sed -i "s/number_cores/$number_cores/g" /etc/nginx/nginx.conf
 #INSTALL PHP-FPM
 yum --enablerepo=remi,remi-php56 install -y php-opcache php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongo php-pecl-sqlite php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
 rm -rf /etc/php-fpm.d/www.conf
+rm -rf /etc/php-fpm.conf
+mv /etc/easynginx/sources/php-fpm.conf /etc/
 rm -rf /etc/php.ini
 mv /etc/easynginx/sources/php.ini /etc/
 
@@ -76,6 +78,8 @@ systemctl enable MariaDB.service
 #MOVE MENU, SOURCE
 mv /etc/easynginx/sources/easynginx /bin/
 chmod +x /bin/easynginx
+chmod 600 /etc/easynginx/sources/*.sh
+chmod 700 -R /etc/easynginx/
 
 #RESTART VPS!!!!!!!!!!!!!
 #/sbin/shutdown -r now
