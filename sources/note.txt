@@ -1,9 +1,0 @@
-chown	-R	demo2:demo2 /home/demo2/
-
-chown	-R	root:root /home/demo2/_logs
-chmod	600	/home/demo2/_logs/*
-
-mkdir /var/lib/php/session/users
-
-mkdir /var/lib/php/session/users/demo2
-chown -R demo2:demo2 /var/lib/php/session/users/demo2
