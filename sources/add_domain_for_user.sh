@@ -43,7 +43,7 @@ fi
 
 # Now we need to copy the virtual host template
 CONFIG=$NGINX_CONFIG/$DOMAIN.conf
-cp $CURRENT_DIR/nginx.vhost.conf.template $CONFIG
+cp $CURRENT_DIR/vhost.template $CONFIG
 $SED -i "s/@@HOSTNAME@@/$DOMAIN/g" $CONFIG
 $SED -i "s#@@PATH@@#\/home\/"$USERNAME$PUBLIC_HTML_DIR"#g" $CONFIG
 $SED -i "s/@@LOG_PATH@@/\/home\/$USERNAME\/_logs/g" $CONFIG
@@ -58,7 +58,7 @@ read MAX_SERVERS
 # Now we need to create a new php fpm pool config
 FPMCONF="$PHP_POOL_DIR/$DOMAIN.pool.conf"
 
-cp $CURRENT_DIR/pool.conf.template $FPMCONF
+cp $CURRENT_DIR/pool.template $FPMCONF
 
 $SED -i "s/@@USER@@/$USERNAME/g" $FPMCONF
 $SED -i "s/@@HOME_DIR@@/\/home\/$USERNAME/g" $FPMCONF
