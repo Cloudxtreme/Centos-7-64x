@@ -1,4 +1,8 @@
+#!/bin/bash
 #CREATE USER
+
+SED=`which sed`
+cd /etc/easynginx/sources/
 source /etc/easynginx/variables/port.sh
 port=$(($port + 1))
 echo -n "Enter user you want to create: "
